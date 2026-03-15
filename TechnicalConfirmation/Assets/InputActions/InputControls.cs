@@ -459,6 +459,15 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GhostSimulate"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ee44f55-8ec8-4f89-87b1-2c880c34bd8d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -615,6 +624,28 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""action"": ""Redo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c14a6f5-19fe-4dc1-9b8b-fa1b6dffad16"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GhostSimulate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0666f2b-c4e7-4e94-a150-b0c0b5f060c0"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GhostSimulate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -638,6 +669,7 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         m_Simulate_Submit = m_Simulate.FindAction("Submit", throwIfNotFound: true);
         m_Simulate_Undo = m_Simulate.FindAction("Undo", throwIfNotFound: true);
         m_Simulate_Redo = m_Simulate.FindAction("Redo", throwIfNotFound: true);
+        m_Simulate_GhostSimulate = m_Simulate.FindAction("GhostSimulate", throwIfNotFound: true);
     }
 
     ~@InputControls()
@@ -971,6 +1003,7 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Simulate_Submit;
     private readonly InputAction m_Simulate_Undo;
     private readonly InputAction m_Simulate_Redo;
+    private readonly InputAction m_Simulate_GhostSimulate;
     /// <summary>
     /// Provides access to input actions defined in input action map "Simulate".
     /// </summary>
@@ -998,6 +1031,10 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Simulate/Redo".
         /// </summary>
         public InputAction @Redo => m_Wrapper.m_Simulate_Redo;
+        /// <summary>
+        /// Provides access to the underlying input action "Simulate/GhostSimulate".
+        /// </summary>
+        public InputAction @GhostSimulate => m_Wrapper.m_Simulate_GhostSimulate;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1036,6 +1073,9 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
             @Redo.started += instance.OnRedo;
             @Redo.performed += instance.OnRedo;
             @Redo.canceled += instance.OnRedo;
+            @GhostSimulate.started += instance.OnGhostSimulate;
+            @GhostSimulate.performed += instance.OnGhostSimulate;
+            @GhostSimulate.canceled += instance.OnGhostSimulate;
         }
 
         /// <summary>
@@ -1059,6 +1099,9 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
             @Redo.started -= instance.OnRedo;
             @Redo.performed -= instance.OnRedo;
             @Redo.canceled -= instance.OnRedo;
+            @GhostSimulate.started -= instance.OnGhostSimulate;
+            @GhostSimulate.performed -= instance.OnGhostSimulate;
+            @GhostSimulate.canceled -= instance.OnGhostSimulate;
         }
 
         /// <summary>
@@ -1192,5 +1235,12 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRedo(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GhostSimulate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGhostSimulate(InputAction.CallbackContext context);
     }
 }

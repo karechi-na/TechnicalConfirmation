@@ -373,6 +373,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GhostSimulate",
+                    "type": "Button",
+                    "id": "8ee44f55-8ec8-4f89-87b1-2c880c34bd8d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -527,6 +536,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Redo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c14a6f5-19fe-4dc1-9b8b-fa1b6dffad16",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GhostSimulate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0666f2b-c4e7-4e94-a150-b0c0b5f060c0",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GhostSimulate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
