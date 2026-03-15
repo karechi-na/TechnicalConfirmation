@@ -24,7 +24,6 @@ public class Simulate
                 break;
         }
 
-        Debug.Log("ìÆÇ≠Ç¡ÅI" + position);
-        OnPositionChanged.Invoke(position);
+        OnPositionChanged?.Invoke(position);
     }
 }

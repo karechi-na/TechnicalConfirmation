@@ -1,11 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System;
 
-public class InputGetter : MonoBehaviour
+public class InputGetter : SingletonMonoBehaviour<InputGetter>
 {
+    public event Action<List<Direction>> OnReplayRequested;
+
     private Stack<ICommand> undoStack = new Stack<ICommand>();
     private Stack<ICommand> redoStack = new Stack<ICommand>();
+
+    // Ghostのシミュレート用
+    private List<Direction> directions = new List<Direction>();
 
     private PlayerInput playerInput;
 
@@ -16,8 +22,9 @@ public class InputGetter : MonoBehaviour
 
     private bool inpputPossible = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -34,6 +41,7 @@ public class InputGetter : MonoBehaviour
         playerInput.actions["Move"].performed += OnMove;
         playerInput.actions["Undo"].performed += OnUndo;
         playerInput.actions["Redo"].performed += OnRedo;
+        playerInput.actions["GhostSimulate"].performed += OnGhostSimulate;
 
         playerInput.actions["Move"].canceled += StickInputCanceled;
     }
@@ -45,6 +53,7 @@ public class InputGetter : MonoBehaviour
         playerInput.actions["Move"].performed -= OnMove;
         playerInput.actions["Undo"].performed -= OnUndo;
         playerInput.actions["Redo"].performed -= OnRedo;
+        playerInput.actions["GhostSimulate"].performed -= OnGhostSimulate;
 
         playerInput.actions["Move"].canceled -= StickInputCanceled;
     }
@@ -71,6 +80,7 @@ public class InputGetter : MonoBehaviour
         command.Execute();
         undoStack.Push(command);
         redoStack.Clear();
+        directions.Add(dir);
 
         inpputPossible = true;
     }
@@ -87,6 +97,7 @@ public class InputGetter : MonoBehaviour
         ICommand command = undoStack.Pop();
         command.Undo();
         redoStack.Push(command);
+
     }
 
     /// <summary>
@@ -101,6 +112,13 @@ public class InputGetter : MonoBehaviour
         ICommand command = redoStack.Pop();
         command.Execute();
         undoStack.Push(command);
+    }
+
+    public void OnGhostSimulate(InputAction.CallbackContext context)
+    {
+        OnReplayRequested?.Invoke(new List<Direction>(directions));
+        undoStack.Clear();
+        directions.Clear();
     }
 
     /// <summary>
