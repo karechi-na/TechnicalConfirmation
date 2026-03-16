@@ -80,7 +80,6 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
         command.Execute();
         undoStack.Push(command);
         redoStack.Clear();
-        directions.Add(dir);
 
         inpputPossible = true;
     }
@@ -97,7 +96,6 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
         ICommand command = undoStack.Pop();
         command.Undo();
         redoStack.Push(command);
-
     }
 
     /// <summary>
@@ -116,9 +114,20 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
 
     public void OnGhostSimulate(InputAction.CallbackContext context)
     {
-        OnReplayRequested?.Invoke(new List<Direction>(directions));
+        List<Direction> history = new List<Direction>();
+
+        foreach (var cmd in undoStack)
+        {
+            if (cmd is MoveCommand move)
+            {
+                history.Add(move.Direction);
+            }
+        }
+
+        history.Reverse();
+
+        OnReplayRequested?.Invoke(history);
         undoStack.Clear();
-        directions.Clear();
     }
 
     /// <summary>

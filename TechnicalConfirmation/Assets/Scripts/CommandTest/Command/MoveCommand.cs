@@ -4,22 +4,22 @@ public class MoveCommand : ICommand
 {
     private Simulate simulate;
 
-    Direction direction = Direction.None;
+    public Direction Direction { get; private set; }
 
     public MoveCommand(Simulate simulate, Direction direction)
     {
         this.simulate = simulate;
-        this.direction = direction;
+        this.Direction = direction;
     }
 
     public void Execute()
     {
-        simulate.Move(direction);
+        simulate.Move(Direction);
     }
 
     public void Undo()
     {
-        simulate.Move(GetOpposite(direction));
+        simulate.Move(GetOpposite(Direction));
     }
 
     private Direction GetOpposite(Direction dir)
