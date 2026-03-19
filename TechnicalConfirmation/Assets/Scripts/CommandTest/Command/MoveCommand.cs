@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MoveCommand : ICommand
 {
     private Simulate simulate;
@@ -22,6 +20,9 @@ public class MoveCommand : ICommand
         simulate.Move(GetOpposite(Direction));
     }
 
+    /// <summary>
+    /// Undoのために、Moveの反対方向を返すメソッド
+    /// </summary>
     private Direction GetOpposite(Direction dir)
     {
         switch (dir)
