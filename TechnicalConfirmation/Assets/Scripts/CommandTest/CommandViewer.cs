@@ -12,6 +12,6 @@ public class CommandViewer : MonoBehaviour
     private void TextChange(Vector2 value)
     {
         
-        text.text = "CommandCount" + value.ToString();
+        text.text = value.ToString();
     }
 }
