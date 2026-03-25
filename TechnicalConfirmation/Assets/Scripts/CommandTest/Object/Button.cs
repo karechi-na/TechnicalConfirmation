@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Button : MonoBehaviour
+namespace TechConf
 {
-    [SerializeField] private Transform player = null;
-
-    [SerializeField] private Transform ghost = null;
-
-    public bool IsPressed
+    public class Button : MonoBehaviour
     {
-        get
+        [SerializeField] private Transform player = null;
+
+        [SerializeField] private Transform ghost = null;
+
+        public bool IsPressed
         {
-            return DistanceUtil.IsNear(transform, player) || DistanceUtil.IsNear(transform, ghost);
+            get
+            {
+                return DistanceUtil.IsNear(transform, player) || DistanceUtil.IsNear(transform, ghost);
+            }
         }
     }
 }

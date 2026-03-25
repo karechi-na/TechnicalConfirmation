@@ -11,7 +11,6 @@ public class CommandViewer : MonoBehaviour
 
     private void TextChange(Vector2 value)
     {
-        
-        text.text = value.ToString();
+        text.text = $"<color=#4EC9B0>Position</color>\nx : {value.x}\ny : 0.0\nz : {value.y}";
     }
 }
