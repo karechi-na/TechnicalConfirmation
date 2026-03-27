@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IMoveStrategy
 {
-    void Move(Transform player, Vector2 input);
+    Vector2Int GetNextPosition(Vector2Int currentPosition, Vector2Int moveDirection);
 }
