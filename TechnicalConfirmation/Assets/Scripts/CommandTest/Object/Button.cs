@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TechConf
+namespace CommandTest
 {
     public class Button : MonoBehaviour
     {

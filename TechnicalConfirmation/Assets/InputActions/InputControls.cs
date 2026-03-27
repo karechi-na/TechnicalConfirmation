@@ -648,6 +648,182 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Strategy"",
+            ""id"": ""64392279-d270-4780-a22f-d1ef65140517"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""ab91e637-05fe-4a78-9bbe-832a531ddcb9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Normal"",
+                    ""type"": ""Button"",
+                    ""id"": ""546b554f-c7c9-444c-9dee-4add3bd7b13a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ghost"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8368d4a-fade-4011-b38b-e9d5cb6b31d3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heavy"",
+                    ""type"": ""Button"",
+                    ""id"": ""5360b337-5456-425f-b3a0-0fdd2b05f5ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""848d69ef-510e-42b6-9abc-4a9236c97e06"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""127dc215-6ec7-42e1-8cc6-e4236561c434"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""dc8b7afc-dd33-48f1-8297-a2e17542a906"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7e7c7d73-59aa-42a7-8f06-accac89be5c8"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""927e90c7-46c5-4e3c-82e0-5f562f5df75b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0523d140-07c7-4c85-97e4-fde5ff47ec29"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef457bf3-922b-4b64-a14d-cc2af1ca33c8"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Normal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3169ff4-b8f8-4f6e-958f-c85d47a2b200"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Normal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""682cf996-4ef4-41e1-9802-889b5d1346cb"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ghost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ced2b3f7-05ae-4163-afde-30d74934f496"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ghost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7176aa4d-e30c-4282-9ce1-f249a0083465"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f479568-f3c2-4f32-9761-7992efedcc08"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -670,6 +846,12 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         m_Simulate_Undo = m_Simulate.FindAction("Undo", throwIfNotFound: true);
         m_Simulate_Redo = m_Simulate.FindAction("Redo", throwIfNotFound: true);
         m_Simulate_GhostSimulate = m_Simulate.FindAction("GhostSimulate", throwIfNotFound: true);
+        // Strategy
+        m_Strategy = asset.FindActionMap("Strategy", throwIfNotFound: true);
+        m_Strategy_Move = m_Strategy.FindAction("Move", throwIfNotFound: true);
+        m_Strategy_Normal = m_Strategy.FindAction("Normal", throwIfNotFound: true);
+        m_Strategy_Ghost = m_Strategy.FindAction("Ghost", throwIfNotFound: true);
+        m_Strategy_Heavy = m_Strategy.FindAction("Heavy", throwIfNotFound: true);
     }
 
     ~@InputControls()
@@ -677,6 +859,7 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputControls.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputControls.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Simulate.enabled, "This will cause a leak and performance issues, InputControls.Simulate.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Strategy.enabled, "This will cause a leak and performance issues, InputControls.Strategy.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1135,6 +1318,135 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="SimulateActions" /> instance referencing this action map.
     /// </summary>
     public SimulateActions @Simulate => new SimulateActions(this);
+
+    // Strategy
+    private readonly InputActionMap m_Strategy;
+    private List<IStrategyActions> m_StrategyActionsCallbackInterfaces = new List<IStrategyActions>();
+    private readonly InputAction m_Strategy_Move;
+    private readonly InputAction m_Strategy_Normal;
+    private readonly InputAction m_Strategy_Ghost;
+    private readonly InputAction m_Strategy_Heavy;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Strategy".
+    /// </summary>
+    public struct StrategyActions
+    {
+        private @InputControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public StrategyActions(@InputControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Strategy/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Strategy_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Strategy/Normal".
+        /// </summary>
+        public InputAction @Normal => m_Wrapper.m_Strategy_Normal;
+        /// <summary>
+        /// Provides access to the underlying input action "Strategy/Ghost".
+        /// </summary>
+        public InputAction @Ghost => m_Wrapper.m_Strategy_Ghost;
+        /// <summary>
+        /// Provides access to the underlying input action "Strategy/Heavy".
+        /// </summary>
+        public InputAction @Heavy => m_Wrapper.m_Strategy_Heavy;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Strategy; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="StrategyActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(StrategyActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="StrategyActions" />
+        public void AddCallbacks(IStrategyActions instance)
+        {
+            if (instance == null || m_Wrapper.m_StrategyActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_StrategyActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Normal.started += instance.OnNormal;
+            @Normal.performed += instance.OnNormal;
+            @Normal.canceled += instance.OnNormal;
+            @Ghost.started += instance.OnGhost;
+            @Ghost.performed += instance.OnGhost;
+            @Ghost.canceled += instance.OnGhost;
+            @Heavy.started += instance.OnHeavy;
+            @Heavy.performed += instance.OnHeavy;
+            @Heavy.canceled += instance.OnHeavy;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="StrategyActions" />
+        private void UnregisterCallbacks(IStrategyActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Normal.started -= instance.OnNormal;
+            @Normal.performed -= instance.OnNormal;
+            @Normal.canceled -= instance.OnNormal;
+            @Ghost.started -= instance.OnGhost;
+            @Ghost.performed -= instance.OnGhost;
+            @Ghost.canceled -= instance.OnGhost;
+            @Heavy.started -= instance.OnHeavy;
+            @Heavy.performed -= instance.OnHeavy;
+            @Heavy.canceled -= instance.OnHeavy;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="StrategyActions.UnregisterCallbacks(IStrategyActions)" />.
+        /// </summary>
+        /// <seealso cref="StrategyActions.UnregisterCallbacks(IStrategyActions)" />
+        public void RemoveCallbacks(IStrategyActions instance)
+        {
+            if (m_Wrapper.m_StrategyActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="StrategyActions.AddCallbacks(IStrategyActions)" />
+        /// <seealso cref="StrategyActions.RemoveCallbacks(IStrategyActions)" />
+        /// <seealso cref="StrategyActions.UnregisterCallbacks(IStrategyActions)" />
+        public void SetCallbacks(IStrategyActions instance)
+        {
+            foreach (var item in m_Wrapper.m_StrategyActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_StrategyActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="StrategyActions" /> instance referencing this action map.
+    /// </summary>
+    public StrategyActions @Strategy => new StrategyActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -1242,5 +1554,41 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGhostSimulate(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Strategy" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="StrategyActions.AddCallbacks(IStrategyActions)" />
+    /// <seealso cref="StrategyActions.RemoveCallbacks(IStrategyActions)" />
+    public interface IStrategyActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Normal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNormal(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ghost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGhost(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Heavy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHeavy(InputAction.CallbackContext context);
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using TechConf;
+using CommandTest;
 
 public class SwitchManager : SingletonMonoBehaviour<SwitchManager>
 {
