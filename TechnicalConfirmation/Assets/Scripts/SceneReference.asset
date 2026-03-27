@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleSceneName: TitleScene
   SceneName1: CommandTestScene
-  SceneName2: 
+  SceneName2: StrategyTestScene
   SceneName3: 

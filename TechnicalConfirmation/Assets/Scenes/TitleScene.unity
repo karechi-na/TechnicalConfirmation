@@ -1300,8 +1300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 891, y: -141}
-  m_SizeDelta: {x: 653, y: 167.8}
+  m_AnchoredPosition: {x: 805, y: -141}
+  m_SizeDelta: {x: 1440.1, y: 167.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733769769
 MonoBehaviour:
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "// \u958B\u767A\u4E2D..."
+  m_text: "// Strategy\u30D1\u30BF\u30FC\u30F3\u7FD2\u4F5C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f510b6c1cec00c246bc495d0b203baf4, type: 2}
   m_sharedMaterial: {fileID: 999287961160824377, guid: f510b6c1cec00c246bc495d0b203baf4, type: 2}
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_text: "<color=#569CD6>public class</color> <color=#4EC9B0>KiiroNoMojiWoOsiteStart</color>
     :  <color=#99CdA1>IStudyPattern</color>\n{\n\t<color=#569CD6>private void</color>
     <color=#DCDCAA>Command</color>() { }\n\t\n\t<color=#569CD6>private void</color>
-    <color=#DCDCAA>UnderDevelopment</color>() { }\n\t\n\t<color=#569CD6>private void</color>
+    <color=#DCDCAA>Strategy</color>() { }\n\t\n\t<color=#569CD6>private void</color>
     <color=#DCDCAA>UnderDevelopment</color>() { }\n}"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2095,8 +2095,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -268.1, y: -147}
-  m_SizeDelta: {x: 1034, y: 139.52}
+  m_AnchoredPosition: {x: -564.9, y: -147}
+  m_SizeDelta: {x: 451.2, y: 139.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919947025
 MonoBehaviour:

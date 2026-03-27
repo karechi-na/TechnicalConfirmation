@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class HeavyMoveStrategy: IMoveStrategy
 {
-    private const float MOVE_DISTANCE = 1.0f;
-
-    public void Move(Transform player, Vector2 input)
+    public Vector2Int GetNextPosition(Vector2Int currentPosition, Vector2Int moveDirection)
     {
-        Vector3 move = new Vector3(input.x, 0.0f, input.y) * MOVE_DISTANCE;
-        player.position += move;
+        return currentPosition + moveDirection;
     }
 }
