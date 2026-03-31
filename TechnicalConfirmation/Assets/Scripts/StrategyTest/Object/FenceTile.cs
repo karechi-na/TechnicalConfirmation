@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class FenceTile : MonoBehaviour,IGridTile
+public class FenceTile : GridTileBase
 {
-    public bool CanEnter(PlayerType playerType)
+    public override bool CanEnter(PlayerType playerType)
     {
-        return playerType == PlayerType.Ghost;
+        return false;
     }
 
-    public void OnEnter(PlayerController player)
+    public override void OnEnter(PlayerController player)
     {
 
     }

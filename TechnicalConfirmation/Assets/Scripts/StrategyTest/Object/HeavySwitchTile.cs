@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 
-public class HeavySwitchTile : MonoBehaviour, IGridTile
+public class HeavySwitchTile : GridTileBase
 {
-    public bool CanEnter(PlayerType playerType)
+    public event Action<bool> OnHeavySwitchActivated;
+    private bool isActivated = false;
+
+    public override bool CanEnter(PlayerType playerType)
     {
         return true;
     }
 
-    public void OnEnter(PlayerController player)
+    public override void OnEnter(PlayerController player)
     {
         if (player.CurrentType != PlayerType.Heavy) return;
 
         Debug.Log("HeavyスイッチON");
+        isActivated = !isActivated;
+        OnHeavySwitchActivated?.Invoke(isActivated);
     }
 }
