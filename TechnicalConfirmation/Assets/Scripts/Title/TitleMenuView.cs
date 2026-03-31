@@ -4,10 +4,15 @@ using UnityEngine.UI;
 
 public class TitleMenuView : MonoBehaviour
 {
+    [Header("ButtonComponentのアタッチされたGameObject")]
     [SerializeField] private GameObject[] buttons = null;
 
+    // PlayerInputComponent
     private PlayerInput playerInput;
 
+    /// <summary>
+    /// 選択中のボタンを管理する列挙型
+    /// </summary>
     private enum SelectButton
     {
         None,
@@ -15,10 +20,14 @@ public class TitleMenuView : MonoBehaviour
         Button2,
         Button3
     }
+    // 選択中のボタンを管理する変数
     private SelectButton selectButton = SelectButton.None;
 
     private bool isPerformed = false;
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -26,6 +35,7 @@ public class TitleMenuView : MonoBehaviour
         ButtonInitialize();
     }
 
+    #region InputActionのイベント登録と解除
     private void OnEnable()
     {
         if (playerInput == null) return;
@@ -38,7 +48,11 @@ public class TitleMenuView : MonoBehaviour
         playerInput.actions["Navigate"].performed -= OnNavigatePerformed;
         playerInput.actions["Submit"].canceled -= OnSubmit;
     }
+    #endregion
 
+    /// <summary>
+    /// 更新処理
+    /// </summary>
     private void Update()
     {
         Vector2 input = playerInput.actions["Navigate"].ReadValue<Vector2>();
@@ -49,15 +63,20 @@ public class TitleMenuView : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// InputAction "Navigate" のperformedイベントのコールバック
+    /// </summary>
     private void OnNavigatePerformed(InputAction.CallbackContext callbackContext)
     {
         Vector2 input = callbackContext.ReadValue<Vector2>();
 
+        // 上下の入力が一定の閾値を超えていない場合は処理しない
         if (Mathf.Abs(input.y) < 0.4f) return;
 
+        // 閾値を超える入力があった場合、isPerformedがtrueであれば処理しない（連続入力防止）
         if (isPerformed) return;
 
+        // 上下の入力に応じて選択中のボタンを変更
         if (input.y > 0.0f)
         {
             MovePrev();
@@ -67,18 +86,23 @@ public class TitleMenuView : MonoBehaviour
             MoveNext();
         }
 
-        Debug.Log("selectButton : " + selectButton);
-
+        // 選択中のボタンを強調表示
         if (selectButton != SelectButton.None)
         {
             ButtonDisplay(selectButton);
         }
 
+        // 入力が処理されたことを示すフラグを立てる
         isPerformed = true;
     }
+
+    /// <summary>
+    /// InputAction "Submit" のcanceledイベントのコールバック
+    /// </summary>
     private void OnSubmit(InputAction.CallbackContext callbackContext)
     {
-        if(selectButton == SelectButton.None) return;
+        // 選択中のボタンがない場合は処理しない
+        if (selectButton == SelectButton.None) return;
 
         int index = (int)selectButton - 1;
 

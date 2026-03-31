@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class FloorTile : MonoBehaviour, IGridTile
+public class FloorTile : GridTileBase
 {
-    public bool CanEnter(PlayerType playerType)
+    public override bool CanEnter(PlayerType playerType)
     {
         return true;
     }
 
-    public void OnEnter(PlayerController player)
+    public override void OnEnter(PlayerController player)
     {
 
     }
