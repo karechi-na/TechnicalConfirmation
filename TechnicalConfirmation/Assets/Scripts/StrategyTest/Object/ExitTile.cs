@@ -6,22 +6,33 @@ public class ExitTile : GridTileBase
 {
     [Header("ExitTile Settings")]
 
+    [Header("0:通常のマテリアル, 1:スイッチが押されたときのマテリアル")]
     [SerializeField] private Material[] materials = new Material[2];
+
+    [Header("子オブジェクトのMeshRenderer")]
     [SerializeField] private MeshRenderer meshRenderer;
+
+    [Header("HeavySwitchTileの参照")]
     [SerializeField] private HeavySwitchTile heavySwitchTile;
 
     [Header("SceneReference")]
     [SerializeField] private SceneReference sceneReference;
 
+    // プレイヤーがゴールに入ったときのイベント
     public event Action<bool> OnPlayerEnter;
 
+    // ゴールにできるかどうかのフラグ
     private bool canGoal = false;
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     private void Start()
     {
         MaterialChanged();
     }
 
+    #region イベントの登録と解除
     private void OnEnable()
     {
         heavySwitchTile.OnHeavySwitchActivated += OnSwitchChanged;
@@ -31,17 +42,30 @@ public class ExitTile : GridTileBase
     {
         heavySwitchTile.OnHeavySwitchActivated -= OnSwitchChanged;
     }
+    #endregion
 
+    /// <summary>
+    /// ゴールに入れるかどうかの判定を行うメソッド
+    /// 全状態のプレイヤーが入れるようにするため、常にtrueを返す
+    /// </summary>
     public override bool CanEnter(PlayerType playerType)
     {
         return true;
     }
+
+    /// <summary>
+    /// 全状態のプレイヤーが入れるが、ゴールできるのはNormal状態のときだけにする
+    /// </summary>
     public override void OnEnter(PlayerController player)
     {
+        // ゴールできる状態でなければ何もしない
         if (!canGoal) return;
-        if (player.CurrentType == PlayerType.Ghost) return;
+        // Normal状態以外のときはゴールできないようにする
+        if (player.CurrentType != PlayerType.Normal) return;
 
+        // ゴールしたときの処理をするよう通知する
         OnPlayerEnter?.Invoke(true);
+        // タイトルに戻る処理を呼び出す
         Invoke(nameof(BackToTitle), 1.5f);
     }
     /// <summary>
@@ -49,7 +73,10 @@ public class ExitTile : GridTileBase
     /// </summary>
     public void OnSwitchChanged(bool isPressed)
     {
+        // ゴールにできるかどうかのフラグを切り替える
         canGoal = isPressed;
+
+        // マテリアルを切り替える
         int changeNum = isPressed ? 1 : 0;
         MaterialChanged(changeNum);
     }
@@ -62,8 +89,12 @@ public class ExitTile : GridTileBase
     {
         meshRenderer.material = materials[matNum];
     }
+
+    /// <summary>
+    /// タイトルに戻る処理をするメソッド
+    /// </summary>
     private void BackToTitle()
     {
-        SceneManager.LoadScene(sceneReference.TitleSceneName);
+        SceneLoader.Instance.LoadTitleScene();
     }
 }

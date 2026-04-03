@@ -9,6 +9,9 @@ public class GhostReplayer : MonoBehaviour
 {
     private Simulate ghostSimulate;
 
+    [Header("InputGetterの参照")]
+    [SerializeField] private InputGetter inputGetter = null;
+
     [SerializeField] private PlayerViewer ghostPlayer;
 
     /// <summary>
@@ -23,12 +26,12 @@ public class GhostReplayer : MonoBehaviour
     #region イベント登録、解除
     private void OnEnable()
     {
-        InputGetter.Instance.OnReplayRequested += StartReplay;
+        inputGetter.OnReplayRequested += StartReplay;
     }
 
     private void OnDisable()
     {
-        InputGetter.Instance.OnReplayRequested -= StartReplay;
+        inputGetter.OnReplayRequested -= StartReplay;
     }
     #endregion
 

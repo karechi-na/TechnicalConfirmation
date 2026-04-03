@@ -468,6 +468,15 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TitleBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""56404101-1ebe-44c8-862c-0bb52ae102ef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -646,6 +655,28 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""action"": ""GhostSimulate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c8c02a8-41a8-4664-92ca-0874c8220a3e"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TitleBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b65cb52e-677e-42a8-b6b4-67bb0f6a309d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TitleBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -684,6 +715,15 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""name"": ""Heavy"",
                     ""type"": ""Button"",
                     ""id"": ""5360b337-5456-425f-b3a0-0fdd2b05f5ac"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TitleBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""15103ad2-214a-47a5-b13f-2ba3611f9e99"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -822,6 +862,28 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""action"": ""Heavy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0a48b88-ffe2-45da-97e1-61c70535518c"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TitleBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8506850-d403-4ee0-8922-cf756fe4dd5f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TitleBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -846,12 +908,14 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         m_Simulate_Undo = m_Simulate.FindAction("Undo", throwIfNotFound: true);
         m_Simulate_Redo = m_Simulate.FindAction("Redo", throwIfNotFound: true);
         m_Simulate_GhostSimulate = m_Simulate.FindAction("GhostSimulate", throwIfNotFound: true);
+        m_Simulate_TitleBack = m_Simulate.FindAction("TitleBack", throwIfNotFound: true);
         // Strategy
         m_Strategy = asset.FindActionMap("Strategy", throwIfNotFound: true);
         m_Strategy_Move = m_Strategy.FindAction("Move", throwIfNotFound: true);
         m_Strategy_Normal = m_Strategy.FindAction("Normal", throwIfNotFound: true);
         m_Strategy_Ghost = m_Strategy.FindAction("Ghost", throwIfNotFound: true);
         m_Strategy_Heavy = m_Strategy.FindAction("Heavy", throwIfNotFound: true);
+        m_Strategy_TitleBack = m_Strategy.FindAction("TitleBack", throwIfNotFound: true);
     }
 
     ~@InputControls()
@@ -1187,6 +1251,7 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Simulate_Undo;
     private readonly InputAction m_Simulate_Redo;
     private readonly InputAction m_Simulate_GhostSimulate;
+    private readonly InputAction m_Simulate_TitleBack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Simulate".
     /// </summary>
@@ -1218,6 +1283,10 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Simulate/GhostSimulate".
         /// </summary>
         public InputAction @GhostSimulate => m_Wrapper.m_Simulate_GhostSimulate;
+        /// <summary>
+        /// Provides access to the underlying input action "Simulate/TitleBack".
+        /// </summary>
+        public InputAction @TitleBack => m_Wrapper.m_Simulate_TitleBack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1259,6 +1328,9 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
             @GhostSimulate.started += instance.OnGhostSimulate;
             @GhostSimulate.performed += instance.OnGhostSimulate;
             @GhostSimulate.canceled += instance.OnGhostSimulate;
+            @TitleBack.started += instance.OnTitleBack;
+            @TitleBack.performed += instance.OnTitleBack;
+            @TitleBack.canceled += instance.OnTitleBack;
         }
 
         /// <summary>
@@ -1285,6 +1357,9 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
             @GhostSimulate.started -= instance.OnGhostSimulate;
             @GhostSimulate.performed -= instance.OnGhostSimulate;
             @GhostSimulate.canceled -= instance.OnGhostSimulate;
+            @TitleBack.started -= instance.OnTitleBack;
+            @TitleBack.performed -= instance.OnTitleBack;
+            @TitleBack.canceled -= instance.OnTitleBack;
         }
 
         /// <summary>
@@ -1326,6 +1401,7 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Strategy_Normal;
     private readonly InputAction m_Strategy_Ghost;
     private readonly InputAction m_Strategy_Heavy;
+    private readonly InputAction m_Strategy_TitleBack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Strategy".
     /// </summary>
@@ -1353,6 +1429,10 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Strategy/Heavy".
         /// </summary>
         public InputAction @Heavy => m_Wrapper.m_Strategy_Heavy;
+        /// <summary>
+        /// Provides access to the underlying input action "Strategy/TitleBack".
+        /// </summary>
+        public InputAction @TitleBack => m_Wrapper.m_Strategy_TitleBack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1391,6 +1471,9 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
             @Heavy.started += instance.OnHeavy;
             @Heavy.performed += instance.OnHeavy;
             @Heavy.canceled += instance.OnHeavy;
+            @TitleBack.started += instance.OnTitleBack;
+            @TitleBack.performed += instance.OnTitleBack;
+            @TitleBack.canceled += instance.OnTitleBack;
         }
 
         /// <summary>
@@ -1414,6 +1497,9 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
             @Heavy.started -= instance.OnHeavy;
             @Heavy.performed -= instance.OnHeavy;
             @Heavy.canceled -= instance.OnHeavy;
+            @TitleBack.started -= instance.OnTitleBack;
+            @TitleBack.performed -= instance.OnTitleBack;
+            @TitleBack.canceled -= instance.OnTitleBack;
         }
 
         /// <summary>
@@ -1554,6 +1640,13 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGhostSimulate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TitleBack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTitleBack(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Strategy" which allows adding and removing callbacks.
@@ -1590,5 +1683,12 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHeavy(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TitleBack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTitleBack(InputAction.CallbackContext context);
     }
 }
