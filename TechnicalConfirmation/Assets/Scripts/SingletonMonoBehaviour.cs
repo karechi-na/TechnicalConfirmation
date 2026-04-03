@@ -3,26 +3,8 @@ using UnityEngine;
 
 public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T instance;
-
-    public static T Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                Type t = typeof(T);
-
-                instance = FindFirstObjectByType<T>();
-
-                if (instance == null)
-                    Debug.Log($"{t} をアタッチしているオブジェクトはありません");
-            }
-
-            return instance;
-        }
-    }
-
+    public static T Instance { get; protected set; }
+ 
     protected virtual void Awake()
     {
         CheckInstance();
@@ -30,15 +12,20 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
 
     protected bool CheckInstance()
     {
-        if (instance == null)
+        T self = this as T;
+
+        if (Instance == null)
         {
-            instance = this as T;
+            Instance = self;
             return true;
         }
-        else if (Instance == this)
+        else if (Instance == self)
         {
             return true;
         }
-        return false;
+
+            Debug.LogWarning($"An instance of {typeof(T).Name} already exists. Destroying the new one.");
+            Destroy(gameObject);
+            return false;
     }
 }

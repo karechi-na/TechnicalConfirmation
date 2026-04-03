@@ -1,8 +1,15 @@
-using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug=UnityEngine.Debug;
 
+/// <summary>
+/// PlayerControllerはプレイヤーの状態を管理し、プレイヤーの移動を制御するクラスです。
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PlayerInputSender playerInputSender = null; // PlayerInputSenderへの参照
+
+    [Header("モデルのYオフセット")]
     [SerializeField] private float modelYOffset = 0.5f;
 
     // プレイヤーの状態を管理する読み取り専用変数
@@ -11,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // 移動戦略を管理する変数
     private IMoveStrategy moveStrategy;
 
+    // プレイヤーの現在のグリッド位置を管理する変数
     public Vector2Int CurrentGridPosition { get; private set; }
 
     /// <summary>
@@ -18,9 +26,13 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        // 初期の移動戦略をNormalMoveStrategyに設定
         moveStrategy = new NormalMoveStrategy();
     }
 
+    /// <summary>
+    /// 参照の取得と初期位置の設定
+    /// </summary>
     private void Start()
     {
         transform.position = GridManager.Instance.GridToWorldPosition(CurrentGridPosition, modelYOffset);
@@ -29,29 +41,36 @@ public class PlayerController : MonoBehaviour
     #region イベント登録、解除
     private void OnEnable()
     {
-        PlayerInputSender.Instance.OnMove += Move;
-        PlayerInputSender.Instance.OnNormalSelected += ChangeToNormal;
-        PlayerInputSender.Instance.OnGhostSelected += ChangeToGhost;
-        PlayerInputSender.Instance.OnHeavySelected += ChangeToHeavy;
+        playerInputSender.OnMove += Move;
+        playerInputSender.OnNormalSelected += ChangeToNormal;
+        playerInputSender.OnGhostSelected += ChangeToGhost;
+        playerInputSender.OnHeavySelected += ChangeToHeavy;
     }
 
     private void OnDisable()
     {
-        PlayerInputSender.Instance.OnMove -= Move;
-        PlayerInputSender.Instance.OnNormalSelected -= ChangeToNormal;
-        PlayerInputSender.Instance.OnGhostSelected -= ChangeToGhost;
-        PlayerInputSender.Instance.OnHeavySelected -= ChangeToHeavy;
+        playerInputSender.OnMove -= Move;
+        playerInputSender.OnNormalSelected -= ChangeToNormal;
+        playerInputSender.OnGhostSelected -= ChangeToGhost;
+        playerInputSender.OnHeavySelected -= ChangeToHeavy;
     }
     #endregion
 
+    /// <summary>
+    /// InputSenderからの移動イベントを処理するメソッド。現在の移動戦略に基づいてプレイヤーを移動させる。
+    /// </summary>
     private void Move(Vector2 inputValue)
     {
+        // 入力値を整数のグリッド移動方向に変換
         Vector2Int moveDirection = new Vector2Int((int)inputValue.x, (int)inputValue.y);
 
+        // 現在の移動Strategyを使用して移動できるかを判定
         MoveResult result = moveStrategy.TryMove(CurrentGridPosition, moveDirection, GridManager.Instance);
 
+        // 移動できない場合は処理を終了
         if (!result.CanMove) return;
 
+        // 移動する場合、Boxも一緒に移動する必要があるかを判定し、必要ならBoxも移動させる
         if (result.HasBoxMove)
         {
             BoxTile box = GridManager.Instance.GetBox(result.BoxCurrentPosition);
@@ -61,9 +80,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // プレイヤーを判定結果に基づいて移動させる
         CurrentGridPosition = result.TargetPosition;
         transform.position = GridManager.Instance.GridToWorldPosition(CurrentGridPosition, modelYOffset);
 
+        // 移動後のタイルに対してOnEnterを呼び出す
         var tiles = GridManager.Instance.GetTiles(CurrentGridPosition);
         foreach (GridTileBase tile in tiles)
         {
@@ -73,6 +94,9 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Strategy変更
+    /// <summary>
+    /// Normalタイプに変更するメソッド。移動戦略をNormalMoveStrategyに切り替える。
+    /// </summary>
     private void ChangeToNormal()
     {
         CurrentType = PlayerType.Normal;
@@ -80,6 +104,9 @@ public class PlayerController : MonoBehaviour
         LogOutput(CurrentType);
     }
 
+    /// <summary>
+    /// Ghostタイプに変更するメソッド。移動戦略をGhostMoveStrategyに切り替える。
+    /// </summary>
     private void ChangeToGhost()
     {
         CurrentType = PlayerType.Ghost;
@@ -87,6 +114,9 @@ public class PlayerController : MonoBehaviour
         LogOutput(CurrentType);
     }
 
+    /// <summary>
+    /// Heavyタイプに変更するメソッド。移動戦略をHeavyMoveStrategyに切り替える。
+    /// </summary>
     private void ChangeToHeavy() 
     {
         CurrentType = PlayerType.Heavy;
@@ -95,6 +125,10 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// デバッグ用のログ出力メソッド。UNITY_EDITORでのみ有効。
+    /// </summary>
+    [Conditional("UNITY_EDITOR")]
     private void LogOutput(PlayerType playerType)
     {
         Debug.Log("PlayerType : " + playerType);

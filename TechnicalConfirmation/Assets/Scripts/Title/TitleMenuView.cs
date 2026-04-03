@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+/// <summary>
+/// タイトルのメニューを管理するクラス
+/// </summary>
 public class TitleMenuView : MonoBehaviour
 {
     [Header("ButtonComponentのアタッチされたGameObject")]
@@ -23,6 +26,7 @@ public class TitleMenuView : MonoBehaviour
     // 選択中のボタンを管理する変数
     private SelectButton selectButton = SelectButton.None;
 
+    // 入力が処理されたかどうかを管理するフラグ
     private bool isPerformed = false;
 
     /// <summary>
@@ -32,7 +36,7 @@ public class TitleMenuView : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
 
-        ButtonInitialize();
+        ButtonImageEnableOff();
     }
 
     #region InputActionのイベント登録と解除
@@ -57,6 +61,7 @@ public class TitleMenuView : MonoBehaviour
     {
         Vector2 input = playerInput.actions["Navigate"].ReadValue<Vector2>();
 
+        // 上下の入力が一定の閾値を超えていない場合、isPerformedをfalseにリセットして次の入力を受け付けるようにする
         if (Mathf.Abs(input.y) < 0.2f)
         {
             isPerformed = false;
@@ -104,6 +109,7 @@ public class TitleMenuView : MonoBehaviour
         // 選択中のボタンがない場合は処理しない
         if (selectButton == SelectButton.None) return;
 
+        // 選択中のボタンに対応するButtonコンポーネントのonClickイベントを呼び出す
         int index = (int)selectButton - 1;
 
         Button btn = buttons[index].GetComponent<Button>();
@@ -113,6 +119,9 @@ public class TitleMenuView : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 次のボタンを選択する
+    /// </summary>
     private void MoveNext()
     {
         if (selectButton == SelectButton.None)
@@ -124,6 +133,9 @@ public class TitleMenuView : MonoBehaviour
         selectButton = (SelectButton)(((int)selectButton % 3) + 1);
     }
 
+    /// <summary>
+    /// 前のボタンを選択する
+    /// </summary>
     private void MovePrev()
     {
         if (selectButton == SelectButton.None)
@@ -147,7 +159,7 @@ public class TitleMenuView : MonoBehaviour
     /// <summary>
     /// ButtonコンポーネントのImageを切る
     /// </summary>
-    private void ButtonInitialize()
+    private void ButtonImageEnableOff()
     {
         foreach (var btn in buttons)
         {
@@ -164,8 +176,9 @@ public class TitleMenuView : MonoBehaviour
     /// </summary>
     private void ButtonDisplay(SelectButton selectButton)
     {
-        ButtonInitialize();
+        ButtonImageEnableOff();
 
+        // 選択中のボタンに対応するButtonコンポーネントのImageを有効にする
         int index = (int)selectButton - 1;
 
         if (index < 0 || index >= buttons.Length) return;

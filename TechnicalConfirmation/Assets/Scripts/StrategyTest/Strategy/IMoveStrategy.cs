@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Strategyパターンの基にするインターフェース
+/// </summary>
 public interface IMoveStrategy
 {
     MoveResult TryMove(

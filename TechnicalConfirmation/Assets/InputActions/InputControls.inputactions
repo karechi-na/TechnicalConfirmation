@@ -382,6 +382,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TitleBack",
+                    "type": "Button",
+                    "id": "56404101-1ebe-44c8-862c-0bb52ae102ef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -560,6 +569,28 @@
                     "action": "GhostSimulate",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c8c02a8-41a8-4664-92ca-0874c8220a3e",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TitleBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b65cb52e-677e-42a8-b6b4-67bb0f6a309d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TitleBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -598,6 +629,15 @@
                     "name": "Heavy",
                     "type": "Button",
                     "id": "5360b337-5456-425f-b3a0-0fdd2b05f5ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TitleBack",
+                    "type": "Button",
+                    "id": "15103ad2-214a-47a5-b13f-2ba3611f9e99",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -734,6 +774,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Heavy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0a48b88-ffe2-45da-97e1-61c70535518c",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TitleBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8506850-d403-4ee0-8922-cf756fe4dd5f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TitleBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

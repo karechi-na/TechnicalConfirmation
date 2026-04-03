@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ƒS[ƒ‹‚µ‚½‚©‚ğŒ©‚éƒNƒ‰ƒX
@@ -37,6 +36,6 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
 
     private void BackToTitle()
     {
-        SceneManager.LoadScene(sceneReference.TitleSceneName);
+        SceneLoader.Instance.LoadTitleScene();
     }
 }

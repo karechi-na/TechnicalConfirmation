@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
 
-public class InputGetter : SingletonMonoBehaviour<InputGetter>
+public class InputGetter : MonoBehaviour
 {
     // コマンドの履歴をリプレイするためのイベント
     public event Action<List<Direction>> OnReplayRequested;
@@ -29,9 +29,8 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
     /// <summary>
     /// AwakeでPlayerInputコンポーネントを取得
     /// </summary>
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -54,6 +53,8 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
         playerInput.actions["GhostSimulate"].performed += OnGhostSimulate;
 
         playerInput.actions["Move"].canceled += OnStickInputCanceled;
+
+        playerInput.actions["TitleBack"].canceled += OnTitleBackCanceled;
     }
 
     private void OnDisable()
@@ -66,6 +67,8 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
         playerInput.actions["GhostSimulate"].performed -= OnGhostSimulate;
 
         playerInput.actions["Move"].canceled -= OnStickInputCanceled;
+
+        playerInput.actions["TitleBack"].canceled -= OnTitleBackCanceled;
     }
     #endregion
 
@@ -174,6 +177,18 @@ public class InputGetter : SingletonMonoBehaviour<InputGetter>
     private void OnStickInputCanceled(InputAction.CallbackContext context)
     {
         inpputPossible = false;
+    }
+
+    /// <summary>
+    /// タイトルに戻るキーが押されたときのイベントメソッド
+    /// </summary>
+    private void OnTitleBackCanceled(InputAction.CallbackContext context)
+    {
+        // タイトルに戻る前に、コマンド履歴をクリア
+        undoStack.Clear();
+        redoStack.Clear();
+
+        SceneLoader.Instance.LoadTitleScene();
     }
 
     /// <summary>
