@@ -821,6 +821,17 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d7d6737b-4ca2-4f5e-a302-0f89bf75840c"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Normal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""682cf996-4ef4-41e1-9802-889b5d1346cb"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
@@ -843,6 +854,17 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""70b372dc-1663-4f2f-8216-d85b356dadff"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ghost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""7176aa4d-e30c-4282-9ce1-f249a0083465"",
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
@@ -856,6 +878,17 @@ public partial class @InputControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""1f479568-f3c2-4f32-9761-7992efedcc08"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f89cfceb-5165-4d6c-a2d3-e35953663100"",
+                    ""path"": ""<Keyboard>/numpad3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
