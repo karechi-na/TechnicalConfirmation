@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [Header("モデルのYオフセット")]
     [SerializeField] private float modelYOffset = 0.5f;
 
+    [Header("プレイヤーの状態に応じたマテリアル")]
+    [SerializeField] private Material[] playerMaterials = null; // プレイヤーの状態に応じたマテリアルの配列 
+
     // プレイヤーの状態を管理する読み取り専用変数
     public PlayerType CurrentType { get; private set; } = PlayerType.Normal;
 
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         // 初期の移動戦略をNormalMoveStrategyに設定
-        moveStrategy = new NormalMoveStrategy();
+        ChangeToNormal();
     }
 
     /// <summary>
@@ -100,7 +103,12 @@ public class PlayerController : MonoBehaviour
     private void ChangeToNormal()
     {
         CurrentType = PlayerType.Normal;
+
         moveStrategy = new NormalMoveStrategy();
+
+        // マテリアルの変更
+        MaterialChange();
+
         LogOutput(CurrentType);
     }
 
@@ -110,7 +118,12 @@ public class PlayerController : MonoBehaviour
     private void ChangeToGhost()
     {
         CurrentType = PlayerType.Ghost;
+
         moveStrategy = new GhostMoveStrategy();
+
+        // マテリアルの変更
+        MaterialChange();
+
         LogOutput(CurrentType);
     }
 
@@ -120,10 +133,26 @@ public class PlayerController : MonoBehaviour
     private void ChangeToHeavy() 
     {
         CurrentType = PlayerType.Heavy;
+
         moveStrategy = new HeavyMoveStrategy();
+
+        // マテリアルの変更
+        MaterialChange();
+
         LogOutput(CurrentType);
     }
     #endregion
+
+    /// <summary>
+    /// materialをCurrentTypeに応じて変更するメソッド。MeshRendererコンポーネントが存在する場合に、対応するマテリアルを適用する。
+    /// </summary>
+    private void MaterialChange()
+    {
+        if (TryGetComponent<MeshRenderer>(out MeshRenderer mesh))
+        {
+            mesh.material = playerMaterials[(int)CurrentType];
+        }
+    }
 
     /// <summary>
     /// デバッグ用のログ出力メソッド。UNITY_EDITORでのみ有効。
