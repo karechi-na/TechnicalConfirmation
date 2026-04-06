@@ -46,11 +46,13 @@ public class TitleMenuView : MonoBehaviour
 
         playerInput.actions["Navigate"].performed += OnNavigatePerformed;
         playerInput.actions["Submit"].canceled += OnSubmit;
+        playerInput.actions["GameEnd"].canceled += OnGameEnd;
     }
     private void OnDisable()
     {
         playerInput.actions["Navigate"].performed -= OnNavigatePerformed;
         playerInput.actions["Submit"].canceled -= OnSubmit;
+        playerInput.actions["GameEnd"].canceled -= OnGameEnd;
     }
     #endregion
 
@@ -117,6 +119,14 @@ public class TitleMenuView : MonoBehaviour
         {
             btn.onClick.Invoke();
         }
+    }
+
+    /// <summary>
+    /// InputAction "GameEnd" のcanceledイベントのコールバック
+    /// </summary>
+    private void OnGameEnd(InputAction.CallbackContext callbackContext)
+    {
+        Application.Quit();
     }
 
     /// <summary>

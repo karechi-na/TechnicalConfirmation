@@ -2791,7 +2791,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
+  m_DefaultActionMap: 470a3169-6ed7-4690-81dc-0891427abb17
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &2017685943
